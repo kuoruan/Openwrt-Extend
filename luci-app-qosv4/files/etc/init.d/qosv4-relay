@@ -1,0 +1,16 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+
+boot () {
+enabled=$(uci get qosv4.@qos_settings[0].enable)
+[ "$enabled" -eq 1 ] &&  {
+	sleep 60 
+	/etc/init.d/qosv4 restart
+}
+}
+
+start(){
+/etc/init.d/qosv4 restart
+}
+
